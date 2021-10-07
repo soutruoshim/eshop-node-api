@@ -14,6 +14,7 @@ app.options("*", cors());
 app.use(express.json());
 app.use(morgan("tiny"));
 app.use(authJwt());
+app.use('/public/uploads', express.static(__dirname + '/public/uploads'));
 app.use(errorHandler);
 
 //Routes
@@ -39,8 +40,8 @@ mongoose.connect(process.env.CONNECTION_STRING)
     console.log(err);
 });
 
-// app.listen(3000, () => {
-//     console.log(api);
-//     console.log("Server is running now http://localhost:3000");
-// });
-app.listen(process.env.PORT || 8080);
+app.listen(3000, () => {
+    console.log(api);
+    console.log("Server is running now http://localhost:3000");
+});
+//app.listen(process.env.PORT || 8080);
